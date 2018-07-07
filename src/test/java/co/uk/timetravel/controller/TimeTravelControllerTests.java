@@ -182,7 +182,7 @@ class TimeTravelControllerTests {
     }
     @Test
     void given_duplicatedPlace_when_postTravelDetails_then_shouldReturnParadoxError() throws Exception {
-        Mockito.doThrow(ParadoxException.class).when(travelService).evaluateAndPersist(any());
+        doThrow(ParadoxException.class).when(travelService).evaluateAndPersist(any());
 
         mockMvc.perform(post(PATH)
                 .content("{ \"pgi\": \"A1234\", \"place\" : \"London\", \"date\" : \"2019-10-26\" }")
