@@ -4,7 +4,6 @@ import co.uk.timetravel.errors.ParadoxException;
 import co.uk.timetravel.services.TravelService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,7 +21,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
-
 class TimeTravelControllerTests {
 
     private static final String PATH = "/time-travel-service";
@@ -145,7 +143,7 @@ class TimeTravelControllerTests {
 
     @Test
     void given_dateInvalidFormat_when_postTravelDetails_then_shouldReturnError() throws Exception {
-        Mockito.doThrow(ParadoxException.class).when(travelService).evaluateAndPersist(any());
+        doThrow(ParadoxException.class).when(travelService).evaluateAndPersist(any());
 
         mockMvc.perform(post(PATH)
                 .content("{ \"pgi\": \"A1234\", \"place\" : \"London\", \"date\" : \"10-10-2019\" }")
@@ -158,7 +156,7 @@ class TimeTravelControllerTests {
 
     @Test
     void given_invalidDate_when_postTravelDetails_then_shouldReturnError() throws Exception {
-        Mockito.doThrow(ParadoxException.class).when(travelService).evaluateAndPersist(any());
+        doThrow(ParadoxException.class).when(travelService).evaluateAndPersist(any());
 
         mockMvc.perform(post(PATH)
                 .content("{ \"pgi\": \"A1234\", \"place\" : \"London\", \"date\" : \"2019-10-2611\" }")
