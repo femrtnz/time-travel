@@ -1,7 +1,7 @@
-
-
-#Time Travel - A space-time travel machine
 # Simple sample application using spring boot, lombok, H2, Rest API, Junit5
+
+## Time Travel - A space-time travel machine
+
 
 - personal galactic identifier (PGI) (alphanumeric, always starts with a letter, between
 5-10 characters)
