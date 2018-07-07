@@ -1,0 +1,8 @@
+
+datasource:
+  driverClass: org.h2.Driver
+  jdbcURL: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+  username: sa
+  password: "sa"
+  hbm2ddlStrategy: create-drop
+  dialect: org.hibernate.dialect.H2Dialect
