@@ -37,7 +37,7 @@ class TravelServiceTests {
         LocalDate now = LocalDate.now();
         String pgi = "ABCDEF";
         String place = "London";
-        travelService.evaluateAndPersist(TravelDetailsDTO.builder().date(now).pgi(pgi).place(place).build());
+        travelService.save(TravelDetailsDTO.builder().date(now).pgi(pgi).place(place).build());
 
         final List<TravelDetails> travelDetails = repository.findAllByPgi(pgi);
         assertFalse(travelDetails.isEmpty());
@@ -53,9 +53,9 @@ class TravelServiceTests {
         LocalDate now = LocalDate.now();
         String pgi = "ABCDEF";
         String place = "London";
-        travelService.evaluateAndPersist(TravelDetailsDTO.builder().date(now).pgi(pgi).place(place).build());
-        travelService.evaluateAndPersist(TravelDetailsDTO.builder().date(now.plusDays(1)).pgi(pgi).place(place).build());
-        travelService.evaluateAndPersist(TravelDetailsDTO.builder().date(now.plusDays(2)).pgi(pgi).place(place).build());
+        travelService.save(TravelDetailsDTO.builder().date(now).pgi(pgi).place(place).build());
+        travelService.save(TravelDetailsDTO.builder().date(now.plusDays(1)).pgi(pgi).place(place).build());
+        travelService.save(TravelDetailsDTO.builder().date(now.plusDays(2)).pgi(pgi).place(place).build());
 
         final List<TravelDetails> travelDetails = repository.findAllByPgi(pgi);
         assertFalse(travelDetails.isEmpty());
@@ -72,9 +72,9 @@ class TravelServiceTests {
         String pgi = "ABCDEF";
         String place = "London";
         TravelDetailsDTO travelDetailsDTO = TravelDetailsDTO.builder().date(now).pgi(pgi).place(place).build();
-        travelService.evaluateAndPersist(travelDetailsDTO);
+        travelService.save(travelDetailsDTO);
 
-       assertThrows(ParadoxException.class, () -> travelService.evaluateAndPersist(travelDetailsDTO));
+       assertThrows(ParadoxException.class, () -> travelService.save(travelDetailsDTO));
 
     }
 }

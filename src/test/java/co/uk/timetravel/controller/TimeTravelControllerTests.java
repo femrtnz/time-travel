@@ -143,7 +143,7 @@ class TimeTravelControllerTests {
 
     @Test
     void given_dateInvalidFormat_when_postTravelDetails_then_shouldReturnError() throws Exception {
-        doThrow(ParadoxException.class).when(travelService).evaluateAndPersist(any());
+        doThrow(ParadoxException.class).when(travelService).save(any());
 
         mockMvc.perform(post(PATH)
                 .content("{ \"pgi\": \"A1234\", \"place\" : \"London\", \"date\" : \"10-10-2019\" }")
@@ -156,7 +156,7 @@ class TimeTravelControllerTests {
 
     @Test
     void given_invalidDate_when_postTravelDetails_then_shouldReturnError() throws Exception {
-        doThrow(ParadoxException.class).when(travelService).evaluateAndPersist(any());
+        doThrow(ParadoxException.class).when(travelService).save(any());
 
         mockMvc.perform(post(PATH)
                 .content("{ \"pgi\": \"A1234\", \"place\" : \"London\", \"date\" : \"2019-10-2611\" }")
@@ -180,7 +180,7 @@ class TimeTravelControllerTests {
     }
     @Test
     void given_duplicatedPlace_when_postTravelDetails_then_shouldReturnParadoxError() throws Exception {
-        doThrow(ParadoxException.class).when(travelService).evaluateAndPersist(any());
+        doThrow(ParadoxException.class).when(travelService).save(any());
 
         mockMvc.perform(post(PATH)
                 .content("{ \"pgi\": \"A1234\", \"place\" : \"London\", \"date\" : \"2019-10-26\" }")

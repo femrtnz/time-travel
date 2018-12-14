@@ -27,7 +27,7 @@ public class TimeTravelController {
 
     @PostMapping
     public ResponseEntity<TravelDetailsDTO> travelDetails(@RequestBody @Valid TravelDetailsDTO travelDetailsDTO) {
-        travelService.evaluateAndPersist(travelDetailsDTO);
+        travelService.save(travelDetailsDTO);
         return new ResponseEntity<>(travelDetailsDTO, HttpStatus.CREATED);
     }
 

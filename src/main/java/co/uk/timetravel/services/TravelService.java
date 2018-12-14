@@ -17,7 +17,7 @@ public class TravelService {
         this.repository = repository;
     }
 
-    public void evaluateAndPersist(TravelDetailsDTO travelDetailsDTO) {
+    public void save(TravelDetailsDTO travelDetailsDTO) {
         validateDate(travelDetailsDTO);
 
         final TravelDetails travelDetails = TravelDetails.builder()
